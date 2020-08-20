@@ -39,5 +39,20 @@ c.NotebookApp.port = 2020   # 自己设置一个就行
 
 #### 4. 运行
 在服务器运行 `jupyter notebook`。
-然后在本地打开浏览器，网址处输入`hostname:port`，其中`hostname`就是服务器的`ip`地址， `port`是在配置中设置的，如刚才设置的是`2020`，例子 `222.119.152.73:2020`。然后输入在第二步设置的密码即可。
+然后在本地打开浏览器，网址处输入`hostname:port`，其中`hostname`就是服务器的`ip`地址， `port`是在配置中设置的，如刚才设置的是`2020`。例子 `222.119.152.73:2020`，然后输入在第二步设置的密码即可。
 > 必须在服务器上打开`jupyter notebook`才能在本地浏览器使用。
+
+#### 5. 另一种设置
+第四步是一种简单的方式，在有些情况下可能不适用，比如**不知道服务器的ip地址**（使用别名），或者**登陆时需要指定端口**（比如执行`ssh -p 5025 user@feg.org`登陆，`-p 5025`是端口， `feg.org`是别名）。这时候，我们需要进行以下设置：
+```python
+ssh -N -f -L localhost:8888:localhost:2020 username@serverIP
+```
+使用一个例子，登陆服务器时使用`ssh -p 5025 xxx@feg.org`，在`jupyter_notebook_config.py`里面设置的端口为`2020`，则需要运行：
+```python
+ssh -N -f -L localhost:8888:localhost:2020 -p 5025 xxx@feg.org
+```
+然后打开浏览器，在网址栏输入
+```python
+localhost:8888
+```
+然后输入之前设置的密码登陆即可。
