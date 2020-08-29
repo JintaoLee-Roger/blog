@@ -7,3 +7,4 @@ This repository is used to record what I did, including some technique and shari
 |name|discription|
 |----|----|
 |[jupyter-remote](./jupyter-remote.md)|remote connect jupyter notebook (run jupyter notebook of remote server in local browser)|
+|[gitbook](./gitbook.md)|install gitbook and its Instructions|

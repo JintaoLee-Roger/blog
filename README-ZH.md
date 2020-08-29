@@ -6,4 +6,5 @@
 
 |文件名|描述|
 |----|----|
-|[jupyter-remote](./jupyter-remote.md)|远程连接服务器的jupyter notebook，即在本地的浏览器中运行服务器的jupyter notebook|
+|[jupyter-remote](./jupyter-remote.md)|远程连接服务器的 jupyter notebook，即在本地的浏览器中运行服务器的 jupyter notebook|
+|[gitbook](./gitbook.md)|gitbook 的安装及使用|
