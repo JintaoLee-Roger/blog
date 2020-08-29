@@ -27,7 +27,7 @@ source ~/.bashrc
 > 注意： 不一定所有版本都能使用gitbook，特别是一些新的版本号，我目前使用的是 v12.13.1，如果你在安装接下来的安装中报错，很有可能是**版本不适配的原因**
 
 如果直接使用 npm 进行安装一些软件，速度可能会非常的慢，因为仓库源在国外，所以我们需要换成国内的镜像仓库，如淘宝、中国科大的镜像仓库。
-```
+```shell
 # 在命令行执行
 npm config set registry https://registry.npm.taobao.org
 # 或者在文件 ~/.npmrc 里面加入
@@ -50,9 +50,32 @@ gitbook@3.2.3 ................
 ```
 
 如果需要将 md 生成 pdf 文件，还需要安装 gitbook-pdf
-```
+```shell
 npm install gitbook-pdf -g
 ```
-直接安装可能会报错，因为有一个包 phantomjs 安装不了，需要手动安装。首先查看 phantomjs 的版本号，如出现了 phantomjs@1.9.7 的字样，说明版本为 1.9.7 。然后去[此处下载](https://bitbucket.org/ariya/phantomjs/downloads/)
+直接安装可能会报错，因为有一个包 phantomjs 安装不了，需要手动安装。首先查看 phantomjs 的版本号，如出现了 phantomjs@1.9.7 的字样，说明版本为 1.9.7 。然后去[此处下载](https://bitbucket.org/ariya/phantomjs/downloads/)。在linux中按如下步骤安装
+```shell
+$ tar -xvf phantomjs-1.9.7-linux-x86_64.tar.bz2 # 解压
+$ sudo mv phantomjs-1.9.7-linux-x86_64 /usr/local/src/phantomjs 
+# 创建软连接到环境变量中，这样可以直接在shell中使用phantomjs命令
+$ sudo ln -sf /usr/local/src/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
+# 也可以移动到指定位置，把PATH加入 .bashrc 即可
 ```
+在 windows 中下载后解压，然后添加到环境变量中即可，如在 path 中加入
+```shell
+C:\phantomjs-1.9.7-windows\
 ```
+
+之后再次运行 `npm install gitbook-pdf -g` 即可
+
+此外，还需要安装 [calibre](https://calibre-ebook.com/download)，在 ubuntu 中直接 `sudo apt-get install calibre` 即可。在windows中下载安装包然后安装即可。
+
+## 使用
+
+可以参考 [blog](https://tonydeng.github.io/gitbook-zh/gitbook-howtouse/book/prjinit.html) 或者 [blog](https://cubieboard.gitbooks.io/gitbook/content)
+
+生成pdf: `gitbook pdf . xxx.pdf`
+
+> gitbook pdf 对 .svg 文件支持不太好，所以 md 文件里面不能有 .svg 图片，似乎可以解决，但我没有研究。在 md 文件里面不能插入网页图片，如 
+> `[example](https://i.imgur.com/Z2xbySO.png)`
+> 否则会报错，如果不生成pdf，则可以这样用。
